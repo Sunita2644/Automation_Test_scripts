@@ -12,11 +12,14 @@ class registerUser(unittest.TestCase):
         driver.find_element(By.XPATH,"//a[@href='/login']").click()
         time.sleep(1)
         driver.find_element(By.XPATH,"//input[@name='name']").send_keys("test")
-        driver.find_element(By.XPATH,"//input[@data-qa='signup-email']").send_keys("test@tests.com")
+        driver.find_element(By.XPATH,"//input[@data-qa='signup-email']").send_keys("tests@testing.com")
         time.sleep(1)
         driver.find_element(By.XPATH,"//button[@data-qa='signup-button']").click()
         time.sleep(1)
-        print("first step completed, now redirected to account information tab")
+        ele=driver.find_element(By.XPATH,"//h2[@class='title text-center']")
+        if ele.text=="ENTER ACCOUNT INFORMATION":
+            print("first step completed, now redirected to account information tab")
+
         driver.find_element(By.XPATH,"//input[@id='id_gender1']").click()
         driver.find_element(By.XPATH, "//input[@id='password']").send_keys("test")
         time.sleep(1)
@@ -54,7 +57,9 @@ class registerUser(unittest.TestCase):
         time.sleep(1)
         driver.find_element(By.XPATH,"//button[@type='submit']").click()
         time.sleep(2)
-        print("completed successfully")
+        ele2=driver.find_element(By.XPATH,"//h2[@data-qa='account-created']")
+        if ele2.text=='ACCOUNT CREATED!':
+            print("Account created successfully")
 
     def tearDown(self):
         driver.close()
