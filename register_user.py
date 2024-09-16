@@ -12,7 +12,7 @@ class registerUser(unittest.TestCase):
         driver.find_element(By.XPATH,"//a[@href='/login']").click()
         time.sleep(1)
         driver.find_element(By.XPATH,"//input[@name='name']").send_keys("test")
-        driver.find_element(By.XPATH,"//input[@data-qa='signup-email']").send_keys("tests@testing.com")
+        driver.find_element(By.XPATH,"//input[@data-qa='signup-email']").send_keys("testss@testss.com")
         time.sleep(1)
         driver.find_element(By.XPATH,"//button[@data-qa='signup-button']").click()
         time.sleep(1)
@@ -61,5 +61,17 @@ class registerUser(unittest.TestCase):
         if ele2.text=='ACCOUNT CREATED!':
             print("Account created successfully")
 
+        driver.find_element(By.XPATH,"//a[@data-qa='continue-button']").click()
+        ele3=driver.find_element(By.XPATH,"//*[@id='header']/div/div/div/div[2]/div/ul/li[10]")
+        try:
+            if ele3.text=='Logged in as test':
+                print("logged in successfully")
+        except Exception as e:
+            print(e)
+        driver.find_element(By.XPATH,"//a[@href='/delete_account']").click()
+        ele4=driver.find_element(By.XPATH,"//h2[@data-qa='account-deleted']")
+        if ele4.text=='ACCOUNT DELETED!':
+            print("Account deleted successfully")
+        driver.find_element(By.XPATH,"//a[@data-qa='continue-button']").click()
     def tearDown(self):
         driver.close()
