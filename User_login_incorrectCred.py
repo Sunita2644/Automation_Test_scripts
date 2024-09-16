@@ -20,7 +20,9 @@ class User_login(unittest.TestCase):
         driver.find_element(By.XPATH,"//button[@data-qa='login-button']").click()
         ele3=driver.find_element(By.XPATH,"//*[@id='form']/div/div/div[1]/div/form/p")
         if ele3.is_displayed():
-            print("error displayed successfully")
+            assert ele3.text=='Your email or password is incorrect!'
+
+        print("error displayed successfully")
 
     def tearDown(self):
         driver.close()
