@@ -10,7 +10,7 @@ class registerUser(unittest.TestCase):
         driver.find_element(By.XPATH,"//a[@href='/login']").click()
         time.sleep(1)
         driver.find_element(By.XPATH,"//input[@name='name']").send_keys("test")
-        driver.find_element(By.XPATH,"//input[@data-qa='signup-email']").send_keys("testss@testss.com")
+        driver.find_element(By.XPATH,"//input[@data-qa='signup-email']").send_keys("tttss@testsss.com")
         time.sleep(1)
         driver.find_element(By.XPATH,"//button[@data-qa='signup-button']").click()
         time.sleep(1)
